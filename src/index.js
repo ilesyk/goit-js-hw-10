@@ -1,5 +1,5 @@
 import { fetchBreeds, fetchCatByBreed } from './cat-api';
-import NiceSelect from 'nice-select2';
+import NiceSelect from 'nice-select2/src/js/nice-select2';
 import "../node_modules/nice-select2/src/scss/nice-select2.scss";
 export const selectors = {
   select: document.querySelector('.breed-select'),
