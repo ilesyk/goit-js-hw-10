@@ -57,6 +57,7 @@
 .cat-info {
     padding: 20px;
     margin: 50px;
+
     width: 700px;
   display: flex;
   flex-direction: column;
@@ -64,7 +65,7 @@
   align-items: center;
   border: black 2px solid;
   border-radius: 4px;
-  background-color: aquamarine;
+  background-color: beige;
 }
 
 .cat-info.hide {
@@ -74,5 +75,5 @@
 .breed-select {
 position: relative;
 left: 50px;
-
+width: 173px;
 }

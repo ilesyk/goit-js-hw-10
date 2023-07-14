@@ -1,18 +1,22 @@
 import { fetchBreeds, fetchCatByBreed } from './cat-api';
-import SlimSelect from 'slim-select';
+import NiceSelect from 'nice-select2';
+import "../node_modules/nice-select2/src/scss/nice-select2.scss";
 export const selectors = {
   select: document.querySelector('.breed-select'),
   loader: document.querySelector('.loader'),
   error: document.querySelector('.error'),
   info: document.querySelector('.cat-info'),
 };
-
+ 
 selectors.loader.classList.remove('hide');
-fetchBreeds().finally(() => {
+
+fetchBreeds().then(() => {
   selectors.loader.classList.add('hide');
+  new NiceSelect(selectors.select);
 });
 
-selectors.select.addEventListener('input', onSelect);
+ 
+selectors.select.addEventListener('change', onSelect);
 
 function onSelect() {
   const breedId = selectors.select.value;
@@ -21,11 +25,13 @@ function onSelect() {
   if (breedId) {
     selectors.select.disabled = true;
     selectors.loader.classList.remove('hide');
-    fetchCatByBreed(breedId).finally(() => {
+    fetchCatByBreed(breedId).then(() => {
       selectors.select.disabled = false;
       selectors.loader.classList.add('hide');
+      
     });
   } else {
     selectors.loader.classList.add('hide');
   }
 }
+
